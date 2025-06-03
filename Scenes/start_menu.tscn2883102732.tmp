@@ -222,6 +222,3 @@ animation = &"spin"
 
 [connection signal="pressed" from="ColorRect/Nav/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="ColorRect/Nav/Exit" to="." method="_on_exit_pressed"]
-[connection signal="pressed" from="ColorRect/Saves/Save1" to="." method="_open_save" binds= [1]]
-[connection signal="pressed" from="ColorRect/Saves/Save2" to="." method="_open_save" binds= [2]]
-[connection signal="pressed" from="ColorRect/Saves/Save3" to="." method="_open_save" binds= [3]]

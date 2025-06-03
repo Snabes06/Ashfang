@@ -17,9 +17,12 @@ func _on_play_pressed() -> void:
 func _on_exit_pressed() -> void:
 	get_tree().quit(0)
 
-func _load_game(i: int):
+func _open_save(i: int):
 	if SaveManager.load_game(i):
 		var data = SaveManager.current_data
+		GameManager._load(data)
+		GameManager.current_save = i
+		
 		get_tree().change_scene_to_file("res://Scenes/hub.tscn")
 	else:
 		get_tree().change_scene_to_file("res://Scenes/hub.tscn")
