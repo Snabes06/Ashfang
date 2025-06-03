@@ -1,0 +1,227 @@
+[gd_scene load_steps=19 format=3 uid="uid://djhyixxi5u4ip"]
+
+[ext_resource type="Script" uid="uid://6lsw5dq122ek" path="res://Scripts/start_menu.gd" id="1_juhg0"]
+[ext_resource type="FontFile" uid="uid://k834vb1brcrf" path="res://Resources/alagard.ttf" id="2_m6uer"]
+[ext_resource type="Texture2D" uid="uid://k424qn1ug6qe" path="res://Resources/player_down_idle.png" id="6_8u0lp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8dijm"]
+bg_color = Color(0.768627, 0.117647, 0.227451, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m6uer"]
+bg_color = Color(0.415686, 0.0509804, 0.678431, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i2i62"]
+bg_color = Color(0.545098, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jgtwh"]
+bg_color = Color(0.180392, 0.180392, 0.180392, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_juhg0"]
+bg_color = Color(0.545098, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a43kq"]
+bg_color = Color(0.545098, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.843137, 0, 1)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_626he"]
+atlas = ExtResource("6_8u0lp")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8u0lp"]
+atlas = ExtResource("6_8u0lp")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i2i62"]
+atlas = ExtResource("6_8u0lp")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lfskg"]
+atlas = ExtResource("6_8u0lp")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ru7em"]
+atlas = ExtResource("6_8u0lp")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_77ila"]
+atlas = ExtResource("6_8u0lp")
+region = Rect2(64, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_00l4x"]
+atlas = ExtResource("6_8u0lp")
+region = Rect2(0, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7vuks"]
+atlas = ExtResource("6_8u0lp")
+region = Rect2(64, 192, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rpttd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_626he")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8u0lp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i2i62")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lfskg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ru7em")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_77ila")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_00l4x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7vuks")
+}],
+"loop": true,
+"name": &"spin",
+"speed": 5.0
+}]
+
+[node name="StartMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_juhg0")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+auto_translate_mode = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Nav" type="VBoxContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="ColorRect/Nav"]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_m6uer")
+theme_override_font_sizes/font_size = 64
+text = "Ashfang"
+horizontal_alignment = 1
+
+[node name="Play" type="Button" parent="ColorRect/Nav"]
+custom_minimum_size = Vector2(200, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_m6uer")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8dijm")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_m6uer")
+theme_override_styles/normal = SubResource("StyleBoxFlat_i2i62")
+action_mode = 0
+text = "Play"
+
+[node name="Settings" type="Button" parent="ColorRect/Nav"]
+custom_minimum_size = Vector2(200, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_m6uer")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_jgtwh")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8dijm")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_m6uer")
+theme_override_styles/normal = SubResource("StyleBoxFlat_juhg0")
+disabled = true
+action_mode = 0
+text = "Settings
+"
+
+[node name="Exit" type="Button" parent="ColorRect/Nav"]
+custom_minimum_size = Vector2(200, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_m6uer")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8dijm")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_m6uer")
+theme_override_styles/normal = SubResource("StyleBoxFlat_juhg0")
+action_mode = 0
+text = "Exit
+"
+
+[node name="Saves" type="HBoxContainer" parent="ColorRect"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Save1" type="Button" parent="ColorRect/Saves"]
+custom_minimum_size = Vector2(200, 500)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("2_m6uer")
+theme_override_styles/normal = SubResource("StyleBoxFlat_a43kq")
+action_mode = 0
+text = "Save 1
+
+Playtime: N/A"
+
+[node name="Save2" type="Button" parent="ColorRect/Saves"]
+custom_minimum_size = Vector2(200, 500)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("2_m6uer")
+theme_override_styles/normal = SubResource("StyleBoxFlat_a43kq")
+action_mode = 0
+text = "Save 2
+
+Playtime: N/A"
+
+[node name="Save3" type="Button" parent="ColorRect/Saves"]
+custom_minimum_size = Vector2(200, 500)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("2_m6uer")
+theme_override_styles/normal = SubResource("StyleBoxFlat_a43kq")
+action_mode = 0
+text = "Save 3
+
+Playtime: N/A"
+
+[node name="spin" type="AnimatedSprite2D" parent="ColorRect"]
+position = Vector2(577, 512)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_rpttd")
+animation = &"spin"
+
+[connection signal="pressed" from="ColorRect/Nav/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="ColorRect/Nav/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="ColorRect/Saves/Save1" to="." method="_load_game" binds= [1]]
+[connection signal="pressed" from="ColorRect/Saves/Save2" to="." method="_load_game" binds= [2]]
+[connection signal="pressed" from="ColorRect/Saves/Save3" to="." method="_load_game" binds= [3]]

@@ -1,0 +1,64 @@
+[gd_scene load_steps=8 format=3 uid="uid://bajnqb75q60yf"]
+
+[ext_resource type="FontFile" uid="uid://k834vb1brcrf" path="res://Resources/alagard.ttf" id="1_ywhir"]
+[ext_resource type="Script" uid="uid://bisau4m2y0txg" path="res://Scripts/menu_buttons.gd" id="2_r6dvn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r6dvn"]
+bg_color = Color(0.768627, 0.117647, 0.227451, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ywhir"]
+bg_color = Color(0.768627, 0.117647, 0.227451, 1)
+
+[sub_resource type="Animation" id="Animation_mlt17"]
+resource_name = "hover_enter"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:theme_override_styles/normal:bg_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(2, 2),
+"update": 0,
+"values": [Color(0.545098, 0, 0, 1), Color(0.768627, 0.117647, 0.227451, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ok7vf"]
+resource_name = "hover_exit"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:theme_override_styles/normal:bg_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(2, 2),
+"update": 0,
+"values": [Color(0.768627, 0.117647, 0.227451, 1), Color(0.545098, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6w8x2"]
+_data = {
+&"hover_enter": SubResource("Animation_mlt17"),
+&"hover_exit": SubResource("Animation_ok7vf")
+}
+
+[node name="ButtonLayout" type="Button"]
+theme_override_fonts/font = ExtResource("1_ywhir")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/hover = SubResource("StyleBoxFlat_r6dvn")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ywhir")
+action_mode = 0
+script = ExtResource("2_r6dvn")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_6w8x2")
+}
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
