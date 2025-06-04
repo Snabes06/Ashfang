@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://d3s08dsw5r7ng"]
+
+[ext_resource type="PackedScene" uid="uid://1hwfn4fvyip4" path="res://Resources/ground.tscn" id="1_usk2b"]
+[ext_resource type="Script" uid="uid://dts8b41ibc2to" path="res://Scripts/player3d.gd" id="1_xvlua"]
+[ext_resource type="Script" uid="uid://be3k3nbbahtyd" path="res://Scripts/camera.gd" id="2_ufypc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_usk2b"]
+albedo_color = Color(0.290196, 0, 0.835294, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4qv08"]
+
+[sub_resource type="Environment" id="Environment_usk2b"]
+background_mode = 1
+background_color = Color(0.752941, 1, 0.752941, 1)
+
+[node name="Hub" type="Node3D"]
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.643222, 0)
+script = ExtResource("1_xvlua")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CharacterBody3D"]
+material = SubResource("StandardMaterial3D_usk2b")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+shape = SubResource("BoxShape3D_4qv08")
+
+[node name="Ground" parent="." instance=ExtResource("1_usk2b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.193468, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_usk2b")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.707107, -0.454519, 0.541675, 0, 0.766044, 0.642788, -0.707107, -0.454519, 0.541675, 5, 8, 5)
+projection = 1
+fov = 100.0
+size = 10.0
+script = ExtResource("2_ufypc")
+target_path = NodePath("../CharacterBody3D")

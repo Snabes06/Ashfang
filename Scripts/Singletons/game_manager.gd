@@ -12,11 +12,11 @@ var session_start_time = 0
 var total_play_time = 0
 
 func _update_session_play_time() -> void:
-	var now_ticks = Time.get_ticks_msec()
-	var elapsed_ms = now_ticks - session_start_time
-	if elapsed_ms > 0:
-		total_play_time += elapsed_ms
-		session_start_time = now_ticks
+	var now = Time.get_unix_time_from_system()
+	var elapsed = now - session_start_time
+	if elapsed > 0:
+		total_play_time += elapsed
+		session_start_time = now
 
 func save() -> void:
 	
