@@ -1,0 +1,39 @@
+[gd_scene load_steps=9 format=3 uid="uid://1hwfn4fvyip4"]
+
+[ext_resource type="Texture2D" uid="uid://djwo4nfvxrtw1" path="res://Resources/Materials/TiledSurfaces (23)_BaseColor.png" id="1_hxnnj"]
+[ext_resource type="Texture2D" uid="uid://cfviyt5ugod6w" path="res://Resources/Materials/TiledSurfaces (23)_AmbientOcclusion.png" id="2_k1mv6"]
+[ext_resource type="Texture2D" uid="uid://5mfc7mohy2j2" path="res://Resources/Materials/TiledSurfaces (23)_Height.png" id="3_4tgkj"]
+[ext_resource type="Texture2D" uid="uid://bj474nrhi8y5i" path="res://Resources/Materials/TiledSurfaces (23)_Normal.png" id="4_yormd"]
+[ext_resource type="Texture2D" uid="uid://cpjfaemdyycq6" path="res://Resources/Materials/TiledSurfaces (23)_Roughness.png" id="5_o88g0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8rmel"]
+size = Vector3(24, 0.1, 24)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sdk88"]
+albedo_color = Color(0.122252, 0.122252, 0.122252, 1)
+albedo_texture = ExtResource("1_hxnnj")
+roughness_texture = ExtResource("5_o88g0")
+normal_enabled = true
+normal_texture = ExtResource("4_yormd")
+ao_enabled = true
+ao_texture = ExtResource("2_k1mv6")
+heightmap_enabled = true
+heightmap_scale = 16.0
+heightmap_deep_parallax = true
+heightmap_min_layers = 8
+heightmap_max_layers = 32
+heightmap_texture = ExtResource("3_4tgkj")
+uv1_scale = Vector3(8.005, 8.005, 8.005)
+
+[sub_resource type="BoxMesh" id="BoxMesh_tppcc"]
+material = SubResource("StandardMaterial3D_sdk88")
+size = Vector3(24, 0.1, 24)
+
+[node name="Ground" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_8rmel")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0437696, -0.00233889, 0.0670367)
+mesh = SubResource("BoxMesh_tppcc")

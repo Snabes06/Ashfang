@@ -1,13 +1,29 @@
-[gd_scene load_steps=8 format=3 uid="uid://bajnqb75q60yf"]
+[gd_scene load_steps=8 format=3 uid="uid://cxrlcrvvpmp2v"]
 
 [ext_resource type="FontFile" uid="uid://k834vb1brcrf" path="res://Resources/alagard.ttf" id="1_ywhir"]
-[ext_resource type="Script" uid="uid://bisau4m2y0txg" path="res://Scripts/menu_buttons.gd" id="2_r6dvn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r6dvn"]
 bg_color = Color(0.768627, 0.117647, 0.227451, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ywhir"]
 bg_color = Color(0.768627, 0.117647, 0.227451, 1)
+
+[sub_resource type="GDScript" id="GDScript_ui03w"]
+script/source = "extends Button
+
+@onready var animation = $AnimationPlayer
+@export var label = \"Placeholder\"
+
+func _ready() -> void:
+	text = label
+
+func _on_mouse_entered() -> void:
+	animation.play(\"hover_enter\")
+
+
+func _on_mouse_exited() -> void:
+	animation.play(\"hover_exit\")
+"
 
 [sub_resource type="Animation" id="Animation_mlt17"]
 resource_name = "hover_enter"
@@ -53,7 +69,7 @@ theme_override_font_sizes/font_size = 16
 theme_override_styles/hover = SubResource("StyleBoxFlat_r6dvn")
 theme_override_styles/normal = SubResource("StyleBoxFlat_ywhir")
 action_mode = 0
-script = ExtResource("2_r6dvn")
+script = SubResource("GDScript_ui03w")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

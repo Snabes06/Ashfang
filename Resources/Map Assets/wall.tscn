@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://b8ufv1uldqqcb"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tp2sk"]
+size = Vector3(0.5, 5, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e2mg2"]
+albedo_color = Color(0.377919, 0.377919, 0.377919, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_byupo"]
+material = SubResource("StandardMaterial3D_e2mg2")
+size = Vector3(0.5, 5, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lq5a5"]
+albedo_color = Color(0.376471, 0.376471, 0.376471, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_tjj3o"]
+material = SubResource("StandardMaterial3D_lq5a5")
+size = Vector3(0.8, 0.5, 10)
+
+[sub_resource type="BoxMesh" id="BoxMesh_lq5a5"]
+material = SubResource("StandardMaterial3D_lq5a5")
+size = Vector3(0.8, 1, 10)
+
+[node name="Wall" type="StaticBody3D"]
+
+[node name="WallCollision" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_tp2sk")
+
+[node name="WallBaseMesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_byupo")
+
+[node name="WallDecorMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.151666, 2.24756, 0)
+mesh = SubResource("BoxMesh_tjj3o")
+
+[node name="WallDecorMesh4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.151666, -2.00127, 0)
+mesh = SubResource("BoxMesh_lq5a5")
+skeleton = NodePath("../WallBaseMesh")

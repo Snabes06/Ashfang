@@ -42,11 +42,11 @@ func _on_exit_pressed() -> void:
 	get_tree().quit(0)
 
 func _open_save(i: int):
+	GameManager.current_save = i
 	if SaveManager.load_game(i):
 		var data = SaveManager.current_data
 		GameManager._load(data)
-		GameManager.current_save = i
 		
-		get_tree().change_scene_to_file("res://Scenes/hub.tscn")
+		get_tree().change_scene_to_file("res://Scenes/hub3d.tscn")
 	else:
-		get_tree().change_scene_to_file("res://Scenes/hub.tscn")
+		get_tree().change_scene_to_file("res://Scenes/hub3d.tscn")

@@ -7,7 +7,7 @@ var current_lvl = 1
 var currency = 0
 var hp = 500
 var speed = 100
-var player_pos = Vector2.ZERO
+var player_pos = Vector3.ZERO
 var session_start_time = 0
 var total_play_time = 0
 
@@ -44,6 +44,6 @@ func _load(data: Dictionary) -> void:
 	new_string = new_string.erase(new_string.length() - 1, 1)
 	var array = new_string.split(", ")
 
-	player_pos = Vector2(int(array[0]), int(array[1]))
+	player_pos = Vector3(int(array[0]), int(array[1]), int(array[2]))
 	
 	session_start_time = Time.get_unix_time_from_system()

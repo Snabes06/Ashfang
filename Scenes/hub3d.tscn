@@ -1,40 +1,86 @@
-[gd_scene load_steps=7 format=3 uid="uid://d3s08dsw5r7ng"]
+[gd_scene load_steps=8 format=3 uid="uid://d3s08dsw5r7ng"]
 
-[ext_resource type="PackedScene" uid="uid://1hwfn4fvyip4" path="res://Resources/ground.tscn" id="1_usk2b"]
-[ext_resource type="Script" uid="uid://dts8b41ibc2to" path="res://Scripts/player3d.gd" id="1_xvlua"]
+[ext_resource type="PackedScene" uid="uid://1hwfn4fvyip4" path="res://Resources/Map Assets/ground.tscn" id="1_usk2b"]
+[ext_resource type="Script" uid="uid://dts8b41ibc2to" path="res://Scripts/player.gd" id="1_xvlua"]
 [ext_resource type="Script" uid="uid://be3k3nbbahtyd" path="res://Scripts/camera.gd" id="2_ufypc"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_usk2b"]
-albedo_color = Color(0.290196, 0, 0.835294, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_4qv08"]
+[ext_resource type="PackedScene" uid="uid://b8ufv1uldqqcb" path="res://Resources/Map Assets/wall.tscn" id="4_dqnw7"]
+[ext_resource type="PackedScene" uid="uid://c057i8orfj5j5" path="res://Scenes/skeleton.tscn" id="4_vldgp"]
 
 [sub_resource type="Environment" id="Environment_usk2b"]
 background_mode = 1
-background_color = Color(0.752941, 1, 0.752941, 1)
+background_color = Color(4.90332e-07, 0.13318, 0.13318, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4qv08"]
 
 [node name="Hub" type="Node3D"]
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+[node name="Map" type="Node3D" parent="."]
+
+[node name="Ground" parent="Map" instance=ExtResource("1_usk2b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.193468, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Map"]
+environment = SubResource("Environment_usk2b")
+
+[node name="Walls" type="Node3D" parent="Map"]
+
+[node name="Wall" parent="Map/Walls" instance=ExtResource("4_dqnw7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.9571, 2.22513, -0.738626)
+
+[node name="Wall2" parent="Map/Walls" instance=ExtResource("4_dqnw7")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7.21285, 2.22513, -11.9771)
+
+[node name="Wall3" parent="Map/Walls" instance=ExtResource("4_dqnw7")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 12.1834, 2.22513, 0.62417)
+
+[node name="Wall4" parent="Map/Walls" instance=ExtResource("4_dqnw7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.9571, 2.22513, 7.14881)
+
+[node name="Wall5" parent="Map/Walls" instance=ExtResource("4_dqnw7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.9571, 2.22513, -7.18438)
+
+[node name="Wall6" parent="Map/Walls" instance=ExtResource("4_dqnw7")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.984136, 2.22513, -11.9771)
+
+[node name="Wall7" parent="Map/Walls" instance=ExtResource("4_dqnw7")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 12.1834, 2.22513, -6.87801)
+
+[node name="Wall8" parent="Map/Walls" instance=ExtResource("4_dqnw7")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 12.1834, 2.22513, 6.98958)
+
+[node name="Wall9" parent="Map/Walls" instance=ExtResource("4_dqnw7")]
+transform = Transform3D(1.19249e-08, 0, 1, 0, 1, 0, -1, 0, 1.19249e-08, 7.43017, 2.22513, 12.2188)
+
+[node name="Wall10" parent="Map/Walls" instance=ExtResource("4_dqnw7")]
+transform = Transform3D(1.19249e-08, 0, 1, 0, 1, 0, -1, 0, 1.19249e-08, 0.117689, 2.22513, 12.2188)
+
+[node name="Wall11" parent="Map/Walls" instance=ExtResource("4_dqnw7")]
+transform = Transform3D(1.19249e-08, 0, 1, 0, 1, 0, -1, 0, 1.19249e-08, -7.32792, 2.22513, 12.2188)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.4849, -0.450956, 0.205537)
+light_color = Color(1, 0.247477, 0.165341, 1)
+omni_range = 29.404
+omni_attenuation = 0.5
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Map"]
+transform = Transform3D(0.46793, 0.821135, 0.326769, 0, -0.369747, 0.929133, 0.883766, -0.434769, -0.173016, 177.807, 161.03, -175.944)
+
+[node name="Player" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.643222, 0)
 script = ExtResource("1_xvlua")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="CharacterBody3D"]
-material = SubResource("StandardMaterial3D_usk2b")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
 shape = SubResource("BoxShape3D_4qv08")
 
-[node name="Ground" parent="." instance=ExtResource("1_usk2b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.193468, 0)
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_usk2b")
+[node name="Skeleton" parent="Player" instance=ExtResource("4_vldgp")]
+transform = Transform3D(1.5, 0, 0, 0, 1.65, 0, 0, 0, 1.5, 0, 0, 0)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.707107, -0.454519, 0.541675, 0, 0.766044, 0.642788, -0.707107, -0.454519, 0.541675, 5, 8, 5)
+transform = Transform3D(0.707107, -0.454519, 0.541676, 0, 0.766045, 0.642787, -0.707107, -0.454519, 0.541676, 10.0203, 15.9836, 10.0107)
 projection = 1
 fov = 100.0
-size = 10.0
+size = 23.0
 script = ExtResource("2_ufypc")
-target_path = NodePath("../CharacterBody3D")
+target_path = NodePath("../Player")
+offset = Vector3(10, 16, 10)
